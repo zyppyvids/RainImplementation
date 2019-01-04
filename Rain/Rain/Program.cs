@@ -101,14 +101,25 @@ namespace Rain
 
         public static void AddNewEntity()
         {
-            int xPos = GenerateNewEntity();
-            fieldOfRain[1, xPos] = '\'';
+            int xPos = GenerateNewEntity(50);
+            if (GenerateNewEntity(50) % 2 == 1)
+            {
+                fieldOfRain[1, xPos] = '\'';
+            }
+            else if (GenerateNewEntity(50) % 3 == 0)
+            {
+                fieldOfRain[1, xPos] = '|';
+            }
+            else
+            {
+                fieldOfRain[1, xPos] = '║';
+            }
         }
 
-        public static int GenerateNewEntity()
+        public static int GenerateNewEntity(int n)
         {
             Random rnd = new Random();
-            return rnd.Next(1, 50);
+            return rnd.Next(0, n);
         }
     }
 }
